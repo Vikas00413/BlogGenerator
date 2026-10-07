@@ -1,0 +1,26 @@
+[project]
+name = "bloggenerator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "vikas kesharvani", email = "vikashkesharvani62@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.142.2",
+    "ipykernel>=7.4.0",
+    "langchain>=1.4.3",
+    "langchain-community>=0.4.2",
+    "langchain-core>=1.6.7",
+    "langchain-openai>=1.6.7",
+    "langgraph>=1.2.14",
+    "pydantic>=2.13.5",
+]
+
+[project.scripts]
+bloggenerator = "bloggenerator:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
