@@ -1,6 +1,7 @@
 from langgraph.graph import StateGraph, START, END
 from bloggenerator.states.blog_state import BlogState
 from src.bloggenerator.nodes.blog_node import BlogNode
+from src.bloggenerator.llms.openapillm import OpenAILLM
 
 
 class GraphBuilder:
@@ -30,4 +31,13 @@ class GraphBuilder:
         if usecase == "topic" :
             self.build_topic_graphic()
         return self.graph.compile()
+
+
+### Below code is for the langsmith lang graph studio
+
+llm=OpenAILLM().get_llm()
+
+## get graph
+graph_builder=GraphBuilder(llm=llm)
+graph=graph_builder.build_topic_graphic().compile()
   
