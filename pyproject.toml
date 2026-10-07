@@ -15,7 +15,10 @@ dependencies = [
     "langchain-core>=1.6.7",
     "langchain-openai>=1.6.7",
     "langgraph>=1.2.14",
+    "langgraph-cli[inmem]>=0.4.32",
     "pydantic>=2.13.5",
+    "uvicorn>=0.54.0",
+    "watchdog>=6.0.0",
 ]
 
 [project.scripts]
