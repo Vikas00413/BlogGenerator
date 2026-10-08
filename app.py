@@ -18,6 +18,7 @@ os.environ['LANGSMITH_API_KEY'] = os.getenv('LANGCHAIN_API_KEY')
 async def create_blog(request:Request):
     data= await request.json()
     topic=data.get("topic","")
+    language=data.get("language","")
 
 
     ##  get them llm Object
@@ -26,12 +27,14 @@ async def create_blog(request:Request):
 
     ## get the graph
     graph_builder= GraphBuilder(llm=llm)
-
-    if topic:
+    if language and topic:
+        graph= graph_builder.setup_graph(usecase='language')
+        state = graph.invoke({'topic':topic,'current_language':language.lower()})
+    elif topic:
         graph= graph_builder.setup_graph(usecase='topic')
         state = graph.invoke({'topic':topic})
 
-        return {'data': state}
+    return {'data': state}
 
 
 if __name__=="__main__":
